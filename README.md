@@ -53,58 +53,151 @@ class NeuralNetwork_v1(nn.Module):
 
 </p>
 </details>
-<details><summary>v1_2</summary>
+<details><summary>v1_5</summary>
 <p>
 
 ```python
-class NeuralNetwork_v1_2(nn.Module):
+class NeuralNetwork_v1_5(nn.Module):
     def __init__(self) -> None:
         super().__init__()
         self.feature_extraction = nn.Sequential(
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=(3,3), padding='same'),
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3,3), padding='same'),
             nn.ReLU(),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=(3,3), padding='same'),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3,3), padding='same'),
             nn.ReLU(),
-            nn.Flatten()
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Flatten(),
         )
         self.dense_layers = nn.Sequential(
-            nn.Linear(in_features=28*28, out_features=64),
+            nn.Linear(in_features=28*28*128, out_features=64),
             nn.ReLU(),
-            nn.Linear(in_features=64, out_features=32),
+            nn.Linear(in_features=64, out_features=64),
             nn.ReLU(),
-            nn.Linear(in_features=32, out_features=10),
-            nn.Softmax()
+            nn.Linear(in_features=64, out_features=10),
+            nn.Softmax(dim=1)
         )
-    
+
     def forward(self, x):
-        x = self.feature_extraction(x)
-        logits = self.dense_layers(x)
+        logits = self.feature_extraction(x)
+        logits = self.dense_layers(logits)
         return logits
 
-# model = NeuralNetwork_v1_2().to(device)
+# model = NeuralNetwork_v1_5().to(device)
 # summary(model, input_size=(batch_size, 1, 28, 28))
 ```
 
 </p>
 </details>
-<details><summary>v1</summary>
+<details><summary>v1_5_2</summary>
 <p>
     
-    
+```python
+class NeuralNetwork_v1_5_2(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.feature_extraction = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Flatten(),
+        )
+        self.dense_layers = nn.Sequential(
+            nn.Linear(in_features=28*28*128, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=10),
+            nn.Softmax(dim=1)
+        )
+
+    def forward(self, x):
+        logits = self.feature_extraction(x)
+        logits = self.dense_layers(logits)
+        return logits
+
+# model = NeuralNetwork_v1_5_2().to(device)
+# summary(model, input_size=(batch_size, 1, 28, 28))
+```
     
 </p>
 </details>
-<details><summary>v1</summary>
+<details><summary>v1_5_2b</summary>
 <p>
     
-    
+```python
+class NeuralNetwork_v1_5_2b(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.feature_extraction = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Flatten(),
+        )
+        self.dense_layers = nn.Sequential(
+            nn.Linear(in_features=28*28*128, out_features=128),
+            nn.ReLU(),
+            nn.Linear(in_features=128, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=10),
+            nn.Softmax(dim=1)
+        )
+
+    def forward(self, x):
+        logits = self.feature_extraction(x)
+        logits = self.dense_layers(logits)
+        return logits
+
+# model = NeuralNetwork_v1_5_2b().to(device)
+# summary(model, input_size=(batch_size, 1, 28, 28))
+```
     
 </p>
 </details>
-<details><summary>v1</summary>
+<details><summary>v1_5_5</summary>
 <p>
     
-    
+```python
+# Increasing num of elt in 1st layer 128->258. Reducing 2nd dense layer 128 -> 64
+class NeuralNetwork_v1_5_5(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.feature_extraction = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3,3), padding='same'),
+            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3,3), padding='same'),
+            nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=(3,3), padding='same'),
+            nn.Conv2d(in_channels=128, out_channels=128, kernel_size=(3,3), padding='same'),
+            nn.ReLU(),
+            nn.Flatten(),
+        )
+        self.dense_layers = nn.Sequential(
+            nn.Linear(in_features=28*28*128, out_features=256),
+            nn.ReLU(),
+            nn.Linear(in_features=256, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=10),
+            nn.Softmax(dim=1)
+        )
+
+    def forward(self, x):
+        logits = self.feature_extraction(x)
+        logits = self.dense_layers(logits)
+        return logits
+
+# model = NeuralNetwork_v1_5_5().to(device)
+# summary(model, input_size=(batch_size, 1, 28, 28))
+```
     
 </p>
 </details>
