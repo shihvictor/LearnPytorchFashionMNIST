@@ -11,6 +11,8 @@ Learning Pytorch using the FashionMNIST dataset.
 
 ## Development Summary
 In order to learn basic PyTorch to implement, test, and improve a neural network, an overall structure consisting of a data section, model section, training and testing functions, plotting function, loss and optimizer, and a training loop function was implemented.
+
+### Models
 <details><summary>v1</summary>
 <p>
 
