@@ -170,6 +170,7 @@ class NeuralNetwork_v1_5_5(nn.Module):
 <details><summary>v1_5_5_BN</summary>
 <p>
 Data normalization helps accelerate the training of the neural network by ___. However, the inputs to each activation function are not. Therefore, batchnormalize is added to normalize the inputs before each activation function, resulting in a significantly increased initial performance, while also allowing for a higher learning rate....
+
 ```python
 # Adding BN before every activation layer.
 class NeuralNetwork_v1_5_5_BN(nn.Module):
