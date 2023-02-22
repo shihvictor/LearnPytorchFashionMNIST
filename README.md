@@ -16,6 +16,7 @@ In order to learn basic PyTorch to implement, test, and improve a neural network
 <details><summary>v1</summary>
 <p>
 This first model serves to test the entire pipeline from data loading to test sample classification
+
 ```python
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using {device} device")
