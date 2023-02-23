@@ -15,7 +15,7 @@ In order to learn basic PyTorch to implement, test, and improve a neural network
 ### Models
 <details><summary>v1</summary>
 <p>
-This first model serves to test the entire pipeline from data loading to test sample classification
+This first model serves to test the implementation of the entire pipeline from data loading to test sample classification in Pytorch.
 
 ```python
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -83,8 +83,11 @@ class NeuralNetwork_v1(nn.Module):
 
 </p>
 </details>
+
+The following models (v1_5_5 and v1_5_5_BN) are included to illustrate the effects of batch normalization on the model's training and performance.
 <details><summary>v1_5_5</summary>
 <p>
+No batch normalization.
     
 ```python
 # Increasing num of elt in 1st layer 128->258. Reducing 2nd dense layer 128 -> 64
