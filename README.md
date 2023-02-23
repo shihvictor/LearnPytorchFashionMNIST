@@ -160,7 +160,7 @@ class NeuralNetwork_v1_5_5(nn.Module):
 </details>
 <details><summary>v1_5_5_BN</summary>
 <p>
-Data normalization helps accelerate the training of the neural network by ___. However, the inputs to each activation function are not. Therefore, batchnormalize is added to normalize the inputs before each activation function, resulting in a significantly increased initial performance, while also allowing for a higher learning rate....
+Data normalization helps accelerate the training of the neural network by reducing internal covariate shift (i.e., reducing the change in the distribution of the activations that occur during training ()). However, the inputs to each activation function are not. Therefore, batchnormalize is added to normalize the inputs before each activation function, resulting in a significantly increased initial performance, while also allowing for a higher learning rate....
 
 ```python
 # Adding BN before every activation layer.
@@ -352,4 +352,6 @@ summary(resnet18, input_size=(batch_size, 1, 28, 28))
 
 
 ## References
-Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms. Han Xiao, Kashif Rasul, Roland Vollgraf. arXiv:1708.07747
+[1]     Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms. Han Xiao, Kashif Rasul, Roland Vollgraf. [Online]. Available: [arXiv:1708.07747](https://arxiv.org/abs/1708.07747)
+
+[2]     S. Ioffe and C. Szegedy, "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift," Mar. 2, 2015. [Online]. Available: [https://arxiv.org/abs/1502.03167](https://arxiv.org/abs/1502.03167)
