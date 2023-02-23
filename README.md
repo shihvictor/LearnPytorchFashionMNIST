@@ -48,8 +48,8 @@ class NeuralNetwork_v1(nn.Module):
         logits = self.dense_layers(x)
         return logits
         
-# model = NeuralNetwork_v1().to(device)
-# summary(model, input_size=(batch_size, 1, 28, 28))
+model_v1 = NeuralNetwork_v1().to(device)
+summary(model_v1, input_size=(batch_size, 1, 28, 28))
 ```
 
     ==========================================================================================
@@ -80,7 +80,9 @@ class NeuralNetwork_v1(nn.Module):
     Params size (MB): 0.16
     Estimated Total Size (MB): 1.05
     ==========================================================================================
-
+Accuracy             |  Loss
+:-------------------------:|:-------------------------:
+![apple](model_logs/model_v1_logs/model_v1_accuracy.png) | ![apple](model_logs/model_v1_logs/model_v1_loss.png)
 </p>
 </details>
 
@@ -240,7 +242,10 @@ summary(model, input_size=(batch_size, 1, 28, 28))
     Params size (MB): 103.98
     Estimated Total Size (MB): 374.26
     ==========================================================================================
-    
+| Model  |  Accuracy             |  Loss  |
+|:-------------------------:|:-------------------------:|------|
+| No BN | ![](model_logs/model_v1_5_5_logs/model_v1_5_5_accuracy.png) | ![](model_logs/model_v1_5_5_logs/model_v1_5_5_loss.png) |
+| BN | ![](model_logs/model_v1_5_5_BN_logs/model_v1_5_5_BN_accuracy.png) | ![](model_logs/model_v1_5_5_BN_logs/model_v1_5_5_BN_loss.png) |
 </p>
 </details>
 
@@ -258,9 +263,6 @@ resnet18.fc = nn.Linear(num_ftrs, 10)
 resnet18.to(device)
 summary(resnet18, input_size=(batch_size, 1, 28, 28))
 ```
-
-
-
 
     ==========================================================================================
     Layer (type:depth-idx)                   Output Shape              Param #
@@ -346,6 +348,9 @@ summary(resnet18, input_size=(batch_size, 1, 28, 28))
     Params size (MB): 44.70
     Estimated Total Size (MB): 88.95
     ==========================================================================================
+Accuracy             |  Loss
+:-------------------------:|:-------------------------:
+![apple](model_logs/resnet18_test_logs/resnet18_test_accuracy.png) | ![apple](model_logs/resnet18_test_logs/resnet18_test_loss.png)
 
 </p>
 </details>
