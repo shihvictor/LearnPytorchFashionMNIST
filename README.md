@@ -162,7 +162,7 @@ class NeuralNetwork_v1_5_5(nn.Module):
 </details>
 <details><summary>v1_5_5_BN</summary>
 <p>
-Data normalization helps accelerate the training of the neural network by reducing internal covariate shift (i.e., reducing the change in the distribution of the activations that occur during training ()). However, the inputs to each activation function are not. Therefore, batchnormalize is added to normalize the inputs before each activation function, resulting in a significantly increased initial performance, while also allowing for a higher learning rate....
+Batch normalization helps accelerate the training of the neural network by reducing internal covariate shift (i.e., reducing the change in the distribution of the activations that occur during training) while allowing for a higher learning rate [2]. Therefore, in order to improve the model while testing for the effects of batch normalization, batch normalization was added before each activation function and model v1_5_5_BN was trained multiple times with different static learning rates.
 
 ```python
 # Adding BN before every activation layer.
@@ -246,6 +246,11 @@ summary(model, input_size=(batch_size, 1, 28, 28))
 |:-------------------------:|:-------------------------:|------|
 | No BN | ![](model_logs/model_v1_5_5_logs/model_v1_5_5_accuracy.png) | ![](model_logs/model_v1_5_5_logs/model_v1_5_5_loss.png) |
 | BN | ![](model_logs/model_v1_5_5_BN_logs/model_v1_5_5_BN_accuracy.png) | ![](model_logs/model_v1_5_5_BN_logs/model_v1_5_5_BN_loss.png) |
+| lrx2 | ![](model_logs/model_v1_5_5_lrx2_logs/model_v1_5_5_lrx2_accuracy.png) | ![](model_logs/model_v1_5_5_lrx2_logs/model_v1_5_5_lrx2_loss.png) |
+| lrx4 | ![](model_logs/model_v1_5_5_lrx4_logs/model_v1_5_5_lrx4_accuracy.png) | ![](model_logs/model_v1_5_5_lrx4_logs/model_v1_5_5_lrx4_loss.png) |
+| lrx8 | ![](model_logs/model_v1_5_5_lrx8_logs/model_v1_5_5_lrx8_accuracy.png) | ![](model_logs/model_v1_5_5_lrx8_logs/model_v1_5_5_lrx8_loss.png) |
+
+Overall, as the learning rate increases, the model achieves a higher training and test accuracy at earlier epochs. Therefore, batch normalization combined with a higher learning rate corresponds to faster learning, which agrees with Ioffe and Szegedy's results. (In the interest of time, each learning rate test was only run once. Otherwise, each test would need to be run multiple times then averaged before comparing them.)
 </p>
 </details>
 
