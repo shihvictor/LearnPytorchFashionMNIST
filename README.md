@@ -13,6 +13,7 @@ Learning Pytorch using the FashionMNIST dataset.
 2. Activate a conda env.
 3. Install git in the conda environment. conda install git
 4. Clone the project. git clone [URL]
+5. Install the necessary packages.
 
 ## Dataset
 Training set: 60,000
