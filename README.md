@@ -3,11 +3,21 @@ Learning Pytorch using the FashionMNIST dataset.
 
 ## TABLE OF CONTENTS
 * [Installation Instructions](#installation-instructions)
-* [Usage](#usage)
+* [Dataset](#dataset)
 * [Development Summary](#development-summary)
 * [Final Model](#final-model)
 * [References](#references)
-* [Citation Info](#citation-info)
+
+## Installation Instructions
+1. In VSCode, create a new workspace.  
+2. Activate a conda env.
+3. Install git in the conda environment. conda install git
+4. Clone the project. git clone [URL]
+
+## Dataset
+Training set: 60,000
+Test set: 10,000
+Each example: 28x28 grayscale image associated with 1 label from 10 classes.
 
 ## Development Summary
 In order to learn basic PyTorch to implement, test, and improve a neural network, an overall structure consisting of a data section, model section, training and testing functions, plotting function, loss and optimizer, and a training loop function was implemented. 
